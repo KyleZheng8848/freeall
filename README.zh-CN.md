@@ -6,7 +6,7 @@
 
 **由 [SofunAI 工作室](assets/brand/README.md)出品并维护。**
 
-**[GitHub 仓库](https://github.com/KyleZheng8848/freeall)**
+**[GitHub 仓库](https://github.com/KyleZheng8848/freeall)** · **[Releases](https://github.com/KyleZheng8848/freeall/releases)** · **[下载最新版](https://github.com/KyleZheng8848/freeall/releases/latest)**
 
 [English](README.md) | **[简体中文](README.zh-CN.md)**
 
@@ -24,9 +24,9 @@
 - 密钥加密存储、同机导出、口令保护的跨设备同步和本机请求日志。
 - 命令行、面板和菜单栏支持简体中文及英语。
 
-## 下载 macOS 应用
+## Releases · 下载 macOS 应用
 
-[全部版本](https://github.com/KyleZheng8848/freeall/releases) · **0.2.16**
+[Releases](https://github.com/KyleZheng8848/freeall/releases) · **[0.2.16](https://github.com/KyleZheng8848/freeall/releases/tag/v0.2.16)**
 
 - [Apple Silicon（M 系列芯片）— DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-arm64.dmg)
 - [Intel 芯片 — DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-x64.dmg)

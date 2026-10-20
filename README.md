@@ -6,7 +6,7 @@
 
 **Published and maintained by [SofunAI Studio](assets/brand/README.md).**
 
-**[GitHub repository](https://github.com/KyleZheng8848/freeall)**
+**[GitHub repository](https://github.com/KyleZheng8848/freeall)** · **[Releases](https://github.com/KyleZheng8848/freeall/releases)** · **[Download latest](https://github.com/KyleZheng8848/freeall/releases/latest)**
 
 **[English](README.md)** | [简体中文](README.zh-CN.md)
 
@@ -24,9 +24,9 @@ Use official keys from accounts you own, within the providers' terms and quotas.
 - Encrypted key storage, same-device account exports, passphrase-protected cross-device sync and local request logs.
 - English and Simplified Chinese interfaces in the CLI, panel and menu-bar app.
 
-## Download the macOS app
+## Releases · Download the macOS app
 
-[All releases](https://github.com/KyleZheng8848/freeall/releases) · **0.2.16**
+[Releases](https://github.com/KyleZheng8848/freeall/releases) · **[0.2.16](https://github.com/KyleZheng8848/freeall/releases/tag/v0.2.16)**
 
 - [Apple Silicon (M-series) — DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-arm64.dmg)
 - [Intel — DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-x64.dmg)
