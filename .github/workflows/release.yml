@@ -43,7 +43,7 @@ jobs:
           npm test
           npm run build
           npm run icons
-          npx --no-install electron-builder --mac dmg zip --${{ matrix.arch }}
+          npx --no-install electron-builder --mac dmg zip --${{ matrix.arch }} --publish never
       - name: Verify bundle and archives
         run: >-
           python3 scripts/verify-macos-release.py
