@@ -24,6 +24,15 @@
 - 密钥加密存储、同机导出、口令保护的跨设备同步和本机请求日志。
 - 命令行、面板和菜单栏支持简体中文及英语。
 
+## 下载 macOS 应用
+
+[全部版本](https://github.com/KyleZheng8848/freeall/releases) · **0.2.16**
+
+- [Apple Silicon（M 系列芯片）— DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-arm64.dmg)
+- [Intel 芯片 — DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-x64.dmg)
+
+Release 页面同时提供 ZIP 和 `SHA256SUMS.txt` 校验文件。应用采用临时签名，尚未经过 Apple 公证。将 FreeAll.app 拖到「应用程序」。首次启动若被 macOS 拦截，核对下载来源后，在「系统设置 → 隐私与安全性」选择「仍要打开」。
+
 ## 从源码构建运行
 
 推荐 **Node.js 22 LTS**，最低 20，并安装 npm。核心 CLI/面板代码跨平台，菜单栏应用和既有打包流程主要面向 macOS；Windows/Linux 虽有打包目标配置，尚未验证发布。

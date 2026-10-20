@@ -26,3 +26,8 @@ Before submitting an issue or pull request, include the observed behavior, expec
 Source contributions do not require publishing access. OSS scripts are optional maintainer tools and must use the publisher's own bucket and credentials. Respect the existing MIT license and third-party notices.
 
 源码贡献不需要发布权限。OSS 脚本为维护者可选工具，发布时使用自己的存储桶与密钥。遵守 MIT 许可并保留第三方声明。
+
+
+## GitHub macOS Release
+
+Run **Actions → Publish macOS apps → Run workflow** on the reviewed commit. The workflow builds natively on Apple Silicon and Intel, verifies the application and both archives, then creates a new `v<version>` tag and GitHub Release with DMG, ZIP and SHA256 checksums. It refuses to overwrite an existing tag. After publication it downloads every installer anonymously and verifies its checksum. This workflow does not publish to OSS or install an app locally. Windows/Linux package targets remain available for local development and are not part of this macOS release workflow.

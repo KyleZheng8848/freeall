@@ -24,6 +24,15 @@ Use official keys from accounts you own, within the providers' terms and quotas.
 - Encrypted key storage, same-device account exports, passphrase-protected cross-device sync and local request logs.
 - English and Simplified Chinese interfaces in the CLI, panel and menu-bar app.
 
+## Download the macOS app
+
+[All releases](https://github.com/KyleZheng8848/freeall/releases) · **0.2.16**
+
+- [Apple Silicon (M-series) — DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-arm64.dmg)
+- [Intel — DMG](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/FreeAll-0.2.16-mac-x64.dmg)
+
+ZIP alternatives and `SHA256SUMS.txt` are available on the release page. The apps use ad hoc signing and are not notarized by Apple. Drag FreeAll.app to Applications. If macOS blocks the first launch, use System Settings → Privacy & Security → Open Anyway after checking the download source.
+
 ## Build and run from source
 
 Use **Node.js 22 LTS** (minimum 20) and npm. Core CLI / panel code is platform-neutral; the menu-bar app and existing packaging workflow are primarily for macOS. Windows/Linux packaging targets are configured but are not verified releases.
