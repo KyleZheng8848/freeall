@@ -6,6 +6,8 @@
 
 **由 [SofunAI 工作室](assets/brand/README.md)出品并维护。**
 
+**[GitHub 仓库](https://github.com/KyleZheng8848/freeall)**
+
 [English](README.md) | **[简体中文](README.zh-CN.md)**
 
 # FreeAll

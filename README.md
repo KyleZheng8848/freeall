@@ -6,6 +6,8 @@
 
 **Published and maintained by [SofunAI Studio](assets/brand/README.md).**
 
+**[GitHub repository](https://github.com/KyleZheng8848/freeall)**
+
 **[English](README.md)** | [简体中文](README.zh-CN.md)
 
 # FreeAll
