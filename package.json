@@ -1,0 +1,107 @@
+{
+  "name": "freeall",
+  "version": "0.2.16",
+  "description": "Local free-tier token pool with a menu-bar app and OpenAI/Anthropic gateway.",
+  "type": "module",
+  "main": "desktop/main.cjs",
+  "bin": {
+    "freeall": "./dist/cli.js"
+  },
+  "freeall": {
+    "releaseDir": "release",
+    "ossTarget": "oss://sometimesgood/FreeAll/",
+    "ossEndpoint": "oss-cn-hangzhou-zmf.aliyuncs.com",
+    "downloadBaseUrl": "https://sometimesgood.oss-cn-hangzhou-zmf.aliyuncs.com/FreeAll/",
+    "downloadPage": "https://sometimesgood.oss-cn-hangzhou-zmf.aliyuncs.com/FreeAll/index.html",
+    "updateManifest": "https://sometimesgood.oss-cn-hangzhou-zmf.aliyuncs.com/FreeAll/latest.json",
+    "keepReleases": 20,
+    "requiredPlatforms": [
+      "mac-arm64"
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "freeall": "tsx src/cli.ts",
+    "test": "tsx --import ./tests/setup.mjs --test tests/*.test.ts",
+    "prepare": "tsc -p tsconfig.json",
+    "icons": "swift scripts/make-icons.swift .",
+    "desktop": "npm run build && electron .",
+    "dist": "npm run build && npm run icons && electron-builder --mac --arm64",
+    "check:version": "node scripts/check-version.mjs",
+    "release:manifest": "node scripts/gen-update-manifest.mjs",
+    "release:publish": "node scripts/publish-release.mjs",
+    "verify:published": "node scripts/verify-published.mjs",
+    "verify:surface": "node scripts/verify-surface.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "electron": "44.1.1",
+    "electron-builder": "26.15.3",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "build": {
+    "appId": "local.freeall.app",
+    "productName": "FreeAll",
+    "artifactName": "FreeAll-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*.js",
+      "!dist/**/*.map",
+      "!dist/mac-*/**",
+      "desktop/**/*",
+      "assets/icon.png",
+      "assets/tray-*.png",
+      "assets/brand/**/*",
+      "LICENSE",
+      "package.json",
+      "!**/.env",
+      "!**/.env.*",
+      "!**/store.json",
+      "!**/master.key",
+      "!**/*secret*",
+      "!**/*credential*",
+      "!Data/**",
+      "!release/**",
+      "!tmp/**"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icon.png",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "assets/icon.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "category": "Development",
+      "icon": "assets/icon.png",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "copyright": "Copyright © 2026 SofunAI Studio and FreeAll contributors"
+  },
+  "author": "SofunAI Studio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KyleZheng8848/freeall.git"
+  },
+  "homepage": "https://github.com/KyleZheng8848/freeall#readme",
+  "bugs": {
+    "url": "https://github.com/KyleZheng8848/freeall/issues"
+  }
+}

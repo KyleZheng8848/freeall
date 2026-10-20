@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FreeAll</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Oxanium:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #d8e4f0; --ink: #152033; --muted: #5a6f88; --line: rgba(40,90,140,.12);
+      --signal: #0d9f6e; --dead: #d63d5c; --cool: #c4880a; --accent: #e85a2a;
+      --glass: rgba(255,255,255,.55); --edge: rgba(255,255,255,.78);
+      --font-display: "Oxanium", sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: transparent; color: var(--ink); }
+    body {
+      font: 12px/1.4 var(--font-mono);
+      background:
+        radial-gradient(220px 120px at 0% 0%, rgba(18,201,138,.16), transparent 60%),
+        radial-gradient(180px 100px at 100% 0%, rgba(232,90,42,.1), transparent 55%),
+        linear-gradient(165deg, rgba(234,242,250,.95), rgba(200,220,238,.92));
+      backdrop-filter: blur(20px) saturate(1.3);
+      -webkit-backdrop-filter: blur(20px) saturate(1.3);
+      min-height: 100vh;
+    }
+    /* 对齐常见菜单栏弹出层：品牌行 + 状态条 + 列表（头部压扁，少占竖向） */
+    .head {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      padding: 8px 10px; border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.4);
+    }
+    .brand {
+      display: flex; align-items: center; gap: 6px; min-width: 0;
+    }
+    .mark {
+      width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+      display: grid; place-items: center;
+      font-family: var(--font-display); font-weight: 700; font-size: 10px;
+      color: #fff; background: linear-gradient(145deg, #12c98a, var(--signal));
+      box-shadow: 0 2px 6px rgba(13,159,110,.22);
+    }
+    .brand-text { display: flex; flex-direction: row; align-items: baseline; gap: 6px; min-width: 0; }
+    .brand-text strong {
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      letter-spacing: .02em; line-height: 1.1;
+    }
+    .brand-text span { font-size: 10px; color: var(--muted); letter-spacing: .02em; }
+    .pill {
+      flex-shrink: 0;
+      font-size: 9px; letter-spacing: .06em; text-transform: uppercase;
+      border: 1px solid currentColor; border-radius: 999px; padding: 2px 6px;
+      background: rgba(255,255,255,.5);
+    }
+    .pill.on { color: var(--signal); }
+    .pill.off { color: var(--dead); }
+    .stat {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      margin: 6px 10px 0; padding: 0;
+      border: 1px solid var(--line); border-radius: 8px;
+      overflow: hidden; background: rgba(255,255,255,.35);
+    }
+    .stat div {
+      padding: 6px 10px; background: rgba(255,255,255,.28);
+    }
+    .stat b {
+      display: block; font-family: var(--font-display); font-size: 15px;
+      color: var(--ink); line-height: 1.1; margin-bottom: 1px;
+    }
+    .stat span { font-size: 9px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+    .policy { padding: 6px 12px 2px; font-size: 11px; color: var(--muted); }
+    .policy code { color: var(--ink); }
+    .list { padding: 0; max-height: 200px; overflow-y: auto; }
+    .row {
+      display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;
+      padding: 6px 12px; border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.18);
+    }
+    .more {
+      padding: 6px 12px 8px; font-size: 10px; color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    .row .name { font-size: 12px; overflow-wrap: anywhere; min-width: 0; }
+    .row .remain { max-width: 140px; overflow-wrap: anywhere; text-align: right; }
+    .row .remain { color: var(--muted); font-size: 11px; }
+    .row.cool .remain { color: var(--cool); }
+    .row.dead .remain { color: var(--dead); }
+    .empty {
+      padding: 16px 12px; text-align: center; color: var(--muted);
+      border-top: 1px solid var(--line); font-size: 11px;
+    }
+    .acts { display: grid; gap: 6px; padding: 10px 12px 12px; }
+    button {
+      width: 100%; font-family: var(--font-display); letter-spacing: .08em;
+      text-transform: uppercase; font-size: 11px; padding: 8px 8px;
+      border: 1px solid rgba(13,159,110,.3); border-radius: 9px;
+      background: rgba(255,255,255,.55); color: var(--signal); cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+    button.ghost {
+      background: rgba(255,255,255,.3); color: var(--muted); border-color: var(--line);
+    }
+  </style>
+</head>
+<body style="visibility:hidden">
+  <div class="head">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">F</div>
+      <div class="brand-text">
+        <strong>FreeAll</strong>
+        <span id="sub" data-i18n="本机网关">本机网关</span>
+      </div>
+    </div>
+    <span class="pill off" id="gate" data-i18n="关">关</span>
+  </div>
+  <div class="stat" id="stat" hidden>
+    <div><b id="stat-avail">—</b><span data-i18n="可用">可用</span></div>
+    <div><b id="stat-today">—</b><span data-i18n="今日">今日</span></div>
+  </div>
+  <div class="policy" id="policy"></div>
+  <div class="list" id="rows"></div>
+  <div class="acts">
+    <button type="button" id="open" data-i18n="打开 FreeAll">打开 FreeAll</button>
+    <button type="button" class="ghost" id="toggle" data-i18n="开启网关">开启网关</button>
+  </div>
+  <script>
+    let popMessages = {};
+    let openPath = "/";
+    const tr = (message, ...params) => (popMessages[message] ?? message).replace(/\{(\d+)\}/g, (token, index) => Number(index) < params.length ? String(params[Number(index)]) : token);
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const $ = (id) => document.getElementById(id);
+    async function paint() {
+      const s = await window.freeall.summary();
+      popMessages = s.messages || {};
+      document.documentElement.lang = s.locale || "en";
+      document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = tr(el.dataset.i18n); });
+      document.body.style.visibility = "visible";
+      openPath = s.scene === "empty" ? "/pool" : "/";
+      $("gate").textContent = s.up ? tr("开") : tr("关");
+      $("gate").className = "pill " + (s.up ? "on" : "off");
+      $("sub").textContent = s.up ? tr("网关运行中") : tr("网关未开启");
+      const showStat = s.scene !== "empty";
+      $("stat").hidden = !showStat;
+      if (showStat) {
+        $("stat-avail").textContent = s.up ? String(s.available ?? 0) : "—";
+        $("stat-today").textContent = String(s.today ?? 0);
+      }
+      if (s.scene === "empty") {
+        $("policy").textContent = "";
+        $("rows").innerHTML = ("<div class=\"empty\">" + tr("还没有账号。请先去账号池添加 Key。") + "</div>");
+        $("open").textContent = tr("打开账号池");
+      } else if (!s.up) {
+        $("policy").textContent = tr("路由规则在面板里设置，开启网关后才会使用。");
+        $("rows").innerHTML = (s.accounts || []).map((a) =>
+          '<div class="row"><span class="name">' + escapeHtml(a.ref) + ("</span>" + "<span class=\"remain\">" + tr("待命") + "</span>" + "</div>")
+        ).join("") + (s.more ? ("<div class=\"more\">" + tr("还有 ")) + s.more + (tr(" 个") + "</div>") : "");
+        $("open").textContent = tr("打开 FreeAll");
+      } else {
+        $("policy").innerHTML = (tr("路由 ") + "<code>") + s.policy + "</code>";
+        $("rows").innerHTML = (s.accounts || []).map((a) => {
+          const cls = a.status === "cooldown" ? "cool" : /invalid|error/.test(a.status || "") ? "dead" : "";
+          return '<div class="row ' + cls + '"><span class="name">' + escapeHtml(a.ref) + '</span><span class="remain">' + escapeHtml(a.remaining) + '</span></div>';
+        }).join("") + (s.more ? ("<div class=\"more\">" + tr("还有 ")) + s.more + (tr(" 个") + "</div>") : "");
+        $("open").textContent = tr("打开 FreeAll");
+      }
+      $("toggle").textContent = s.up ? tr("停止网关") : tr("开启网关");
+    }
+    $("open").onclick = () => window.freeall.open(openPath);
+    $("toggle").onclick = async () => {
+      const s = await window.freeall.summary();
+      if (s.up) await window.freeall.stop();
+      else await window.freeall.start();
+      paint();
+    };
+    paint();
+    setInterval(paint, 4000);
+  </script>
+</body>
+</html>

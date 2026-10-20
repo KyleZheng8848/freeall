@@ -1,0 +1,25 @@
+node_modules/
+dist/
+dist/mac-arm64/
+release/
+assets/_huamei-*.png
+*.tsbuildinfo
+.DS_Store
+Data/
+.env
+.env.*
+**/store.json
+**/master.key
+coverage/
+*.log
+tmp/
+.freeall-test/
+
+# Local validation, exports and workstation files
+.cache/
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.freeall/
