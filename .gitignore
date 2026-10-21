@@ -23,3 +23,5 @@ tmp/
 *.p12
 *.pfx
 .freeall/
+
+/assets/demo/*.mp4

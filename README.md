@@ -16,6 +16,18 @@ A local pool for your own API accounts, with a menu-bar app, web panel and OpenA
 
 Use official keys from accounts you own, within the providers' terms and quotas. FreeAll does not provide API keys or unlimited usage; quotas, model availability and billing remain controlled by each provider. Local usage estimates are not an official bill.
 
+![FreeAll's real web panel with local agent connection instructions](assets/screenshots/dashboard.jpg)
+
+[![Computer Use browser walkthrough](assets/demo/preview.gif)](docs/MEDIA.md)
+
+**[Watch the walkthrough (MP4)](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/freeall-browser-walkthrough-0.2.16.mp4)** · [Screenshots and capture notes](docs/MEDIA.md)
+
+Captured from the actual panel in an isolated session with an invalid demo key and external provider calls disabled. The account therefore shows an error; quotas, requests and model replies are not fabricated. The silent video is an edited sequence of sampled browser captures, not a continuous desktop recording.
+
+## Your first connection
+
+Install the macOS app below, or start the source panel → add your own official key in Accounts → choose a client under Connect Agent → follow its local connection commands. You can explore the empty panel without a key; real requests require a valid account and provider quota.
+
 ## What it includes
 
 - Account pools for Groq, Gemini, OpenRouter, Cerebras, Mistral, NVIDIA, Together, SiliconFlow, Zhipu and custom OpenAI compatible endpoints.
@@ -154,3 +166,13 @@ The maintainer's existing [download page](https://sometimesgood.oss-cn-hangzhou-
 ## License
 
 Copyright © 2026 SofunAI Studio and FreeAll contributors. Source code is available under [MIT](LICENSE). Preserve third-party dependency and asset licenses. Provider APIs, models and third-party agents remain subject to their own terms. Shared studio assets are documented in [assets/brand](assets/brand/README.md).
+
+## Contributions and tooling
+
+Start with a reproducible bug, translation or focused fix using [CONTRIBUTING.md](CONTRIBUTING.md). If FreeAll helps you, a star helps others discover it. [Codex](https://developers.openai.com/codex/) assisted with open-source preparation, documentation and verification; Git history records actual contributors.
+
+## More from SofunAI Studio
+
+- [Musepaper](https://github.com/KyleZheng8848/musepaper) — AI wallpapers
+- [CPET](https://github.com/KyleZheng8848/cpet) — Coding-agent desktop companion
+- [音悦台 / Yinyuetai](https://github.com/KyleZheng8848/yinyuetai) — Local-first music workspace

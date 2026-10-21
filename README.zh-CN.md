@@ -16,6 +16,18 @@
 
 仅使用你自己持有的官方 Key，并遵守供应商条款与额度规则。FreeAll 不提供密钥或无限额度；可用模型、实际限额和收费由供应商决定，本地账本不是官方账单。
 
+![FreeAll 真实网页面板：本机 Agent 接入](assets/screenshots/dashboard.jpg)
+
+[![Computer Use 浏览器操作剪辑](assets/demo/preview.gif)](docs/MEDIA.md)
+
+**[观看操作剪辑（MP4）](https://github.com/KyleZheng8848/freeall/releases/download/v0.2.16/freeall-browser-walkthrough-0.2.16.mp4)** · [更多截图与演示说明](docs/MEDIA.md)
+
+画面来自真实面板的隔离会话。使用无效示例 Key，外部供应商调用已禁用，因此账号显示错误；没有伪造额度、请求或模型回复。视频为无旁白的采样画面剪辑，非连续桌面录像。
+
+## 先跑通一条接入路径
+
+安装下方 macOS 应用，或按源码步骤启动面板 → 在账号池添加自己的官方 Key → 在看板的 Agent 接入区选择客户端 → 按生成的本机接入命令配置。只想先看界面可不添加 Key；真实调用需要有效账号及供应商额度。
+
 ## 功能
 
 - 支持 Groq、Gemini、OpenRouter、Cerebras、Mistral、NVIDIA、Together、SiliconFlow、智谱，以及自定义 OpenAI 兼容接口。
@@ -154,3 +166,13 @@ macOS 安装 Xcode Command Line Tools / Swift 后，执行 `npm run dist`，按�
 ## 许可证
 
 版权所有 © 2026 SofunAI 工作室及 FreeAll 贡献者，源码采用 [MIT](LICENSE)。保留第三方依赖与素材的许可声明。供应商 API、模型和第三方 Agent 各自遵循其条款。共享工作室素材见 [assets/brand](assets/brand/README.md)。
+
+## 贡献与工具致谢
+
+欢迎提交可复现的问题、翻译或单一功能修复；使用 [贡献指南](CONTRIBUTING.md) 开始。如果对你有帮助，欢迎点 Star，帮助更多人发现它。开源整理、文档和验证获得 [Codex](https://developers.openai.com/codex/) 辅助；实际贡献者以 Git 历史为准。
+
+## 更多 SofunAI 开源作品
+
+- [Musepaper](https://github.com/KyleZheng8848/musepaper) — AI 壁纸与作品管理
+- [CPET](https://github.com/KyleZheng8848/cpet) — 编程 Agent 桌宠与工作台
+- [音悦台 / Yinyuetai](https://github.com/KyleZheng8848/yinyuetai) — 本地优先音乐工作台
